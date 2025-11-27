@@ -20,9 +20,8 @@ public class DoorOpener : MonoBehaviour, IInteractable
 
 
     public UnityEvent onActionTriggered;
-    public float jumpScareDelay = 1.0f;
-    public AudioSource doorOpenSound;
-    public AudioSource doorCloseSound;
+    public AudioSource playerSFX;
+    public AudioClip doorSound;
 
     void Start()
     {
@@ -45,18 +44,13 @@ public class DoorOpener : MonoBehaviour, IInteractable
         }
         if (isOpen == true)
         {
-            if (doorCloseSound != null)
-            {
-                doorCloseSound.Play();
-            }
+                playerSFX.PlayOneShot(doorSound);
+
             CloseDoorOrDrawer();
         }
         else
         {
-            if (doorOpenSound != null)
-            {
-                doorOpenSound.Play();
-            }
+            playerSFX.PlayOneShot(doorSound);
             OpenDoorOrDrawer();
         }
     }
@@ -81,8 +75,6 @@ public class DoorOpener : MonoBehaviour, IInteractable
             }
         }
 
-        isOpen = true;
-        Invoke(nameof(TriggerEvent), jumpScareDelay);
     }
 
     void CloseDoorOrDrawer()
