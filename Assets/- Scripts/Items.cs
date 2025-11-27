@@ -3,7 +3,8 @@ using UnityEngine;
 public class Items : MonoBehaviour, IInteractable
 {
     public bool canPickUp = true;
-    public AudioSource itemSound;
+    public AudioSource itemAudioSource;
+    public AudioClip itemPickupSound;
 
     [SerializeField][HideInInspector] public Vector3 itemPositionDeviation = new Vector3(0, 0, 0);
     [SerializeField][HideInInspector] public Vector3 itemRotationDeviation = new Vector3(0, 0, 0);
@@ -43,8 +44,7 @@ public class Items : MonoBehaviour, IInteractable
             transform.localRotation = Quaternion.Euler(0, 0, 0) * Quaternion.Euler(itemRotationDeviation);
             player.isHandsFree = false;
 
-            if (itemSound != null)
-                itemSound.Play();
+            itemAudioSource.PlayOneShot(itemPickupSound);
 
             // Remove glow material (assumed to be the second one)
             if (itemRenderer != null && itemRenderer.materials.Length > 1)

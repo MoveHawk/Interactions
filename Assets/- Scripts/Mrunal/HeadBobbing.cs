@@ -3,13 +3,17 @@ using UnityEngine;
 public class HeadBobbing : MonoBehaviour
 {
     [Header("Bobbing Settings")]
-    public float bobSpeed = 7f;            // Slightly faster for exaggerated effect
-    public float verticalBobAmount = 0.1f; // More vertical bobbing
-    public float horizontalBobAmount = 0.05f; // Slight horizontal sway
+    public float bobSpeed = 7f;
+    public float verticalBobAmount = 0.1f;
+    public float horizontalBobAmount = 0.05f;
     public CharacterController playerController;
+
+    [Header("Stabilization")]
+    public float stabilizationStrength = 12f; // Higher = more perfect center
 
     private Vector3 originalLocalPos;
     private float timer;
+    private Vector3 bobOffset; // <- store offset separately
 
     private void Start()
     {
@@ -24,26 +28,27 @@ public class HeadBobbing : MonoBehaviour
         {
             timer += Time.deltaTime * bobSpeed;
 
-            float bobOffsetY = Mathf.Sin(timer) * verticalBobAmount;
-            float bobOffsetX = Mathf.Sin(timer * 0.5f) * horizontalBobAmount; // Slow horizontal sway
-
-            Vector3 newPos = new Vector3(originalLocalPos.x + bobOffsetX,
-                                        originalLocalPos.y + bobOffsetY,
-                                        originalLocalPos.z);
-
-            transform.localPosition = Vector3.Lerp(transform.localPosition, newPos, Time.deltaTime * 10f);
+            bobOffset.x = Mathf.Sin(timer * 0.5f) * horizontalBobAmount;
+            bobOffset.y = Mathf.Sin(timer) * verticalBobAmount;
         }
         else
         {
-            // Reset smoothly when idle
             timer = 0;
-            transform.localPosition = Vector3.Lerp(transform.localPosition, originalLocalPos, Time.deltaTime * 6f);
+            bobOffset = Vector3.zero; // Stop bob
         }
+
+        // Smoothly apply bob on top of original position without drifting aim
+        transform.localPosition = Vector3.Lerp(
+            transform.localPosition,
+            originalLocalPos + bobOffset,
+            Time.deltaTime * stabilizationStrength
+        );
     }
 
     private bool IsPlayerMoving()
     {
         return playerController.isGrounded &&
-               (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f || Mathf.Abs(Input.GetAxis("Vertical")) > 0.1f);
+               (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f ||
+                Mathf.Abs(Input.GetAxis("Vertical")) > 0.1f);
     }
 }
