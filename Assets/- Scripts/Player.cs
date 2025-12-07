@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Diagnostics;
-using UnityEngine.Scripting.APIUpdating;
 
 public class Player : MonoBehaviour
 {
