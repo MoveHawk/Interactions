@@ -160,3 +160,4 @@ MonoBehaviour:
   itemName: Red Cube
   itemDescription: A very Beautiful Red Cube indeed, Perfect Object for interaction
     testing aswell.
+  itemData2D: {fileID: 11400000, guid: e627145e1f55d3e438e9894acbf76123, type: 2}

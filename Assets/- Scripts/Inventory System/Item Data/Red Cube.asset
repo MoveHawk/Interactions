@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b806633eb72c0f45ab906005cc03c92, type: 3}
+  m_Name: Red Cube
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Red Cube
+  icon: {fileID: 21300000, guid: 780bae964251c5c4d9a73a0d007e8f87, type: 3}
+  sizeX: 2
+  sizeY: 2
+  stackable: 0
+  maxStack: 1
+  description: A very good looking Red Cube.

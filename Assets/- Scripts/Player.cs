@@ -69,15 +69,19 @@ public class Player : MonoBehaviour
 
     void Look()
     {
+        if (Cursor.lockState != CursorLockMode.Locked)
+            return;
+
         float mouseX = lookInput.x * mouseSensitivity;
         float mouseY = lookInput.y * mouseSensitivity;
-        playerYRotaion = mouseX; //
+
         cameraXRotation -= mouseY;
         cameraXRotation = Mathf.Clamp(cameraXRotation, maxLookUp, maxLookDown);
 
-        transform.Rotate(Vector3.up * playerYRotaion);
+        transform.Rotate(Vector3.up * mouseX);
         playerCamera.transform.localRotation = Quaternion.Euler(cameraXRotation, 0f, 0f);
     }
+
 
     void OnMove(InputValue value)
     {
@@ -182,6 +186,21 @@ public class Player : MonoBehaviour
         currentItem = itemContainer.transform.GetChild(0);
         return currentItem;
     }
+
+    public void SetInventoryState(bool isOpen)
+    {
+        if (isOpen)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
+
 
     void OnDrawGizmos()
     {

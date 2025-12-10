@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraEffects : MonoBehaviour
 {
@@ -17,6 +17,12 @@ public class CameraEffects : MonoBehaviour
     private float swayAngleZ;
 
     private Quaternion baseRotation; // stores camera rotation from mouse look
+    private bool inventoryOpen = false;
+
+    public void SetInventoryState(bool isOpen)
+    {
+        inventoryOpen = isOpen;
+    }
 
     void Start()
     {
@@ -26,14 +32,15 @@ public class CameraEffects : MonoBehaviour
 
     void Update()
     {
+        if (inventoryOpen) return;   // ← disables bob + sway
+
         if (playerController == null) return;
 
-        // Must update before applying sway each frame
         baseRotation = transform.localRotation;
-
         HandleHeadBob();
         HandleCameraSway();
     }
+
 
     private void HandleHeadBob()
     {
