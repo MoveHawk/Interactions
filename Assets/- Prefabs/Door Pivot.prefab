@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &414976583577480116
+--- !u!1 &2577126036747311155
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,31 +8,31 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7714821287727953547}
+  - component: {fileID: 752897618377822383}
   m_Layer: 6
-  m_Name: 'Door '
+  m_Name: Door Pivot
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7714821287727953547
+--- !u!4 &752897618377822383
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 414976583577480116}
+  m_GameObject: {fileID: 2577126036747311155}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 1.11022296e-17, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.0000525, y: -0.023094714, z: 1.1121025}
+  m_LocalScale: {x: 1, y: 0.832, z: 0.14763151}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 269264048348901867}
+  - {fileID: 110427402585364757}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1092312978795775623
+--- !u!1 &3028741256080883474
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,12 +40,13 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 269264048348901867}
-  - component: {fileID: 8834564252384088907}
-  - component: {fileID: 3431110913410284739}
-  - component: {fileID: 4978559370499246908}
-  - component: {fileID: 8257657944617065874}
-  - component: {fileID: 3411124236110402710}
+  - component: {fileID: 110427402585364757}
+  - component: {fileID: 5832327987801608068}
+  - component: {fileID: 2682328029406341090}
+  - component: {fileID: 5136726258326352338}
+  - component: {fileID: 1621099663974207764}
+  - component: {fileID: 4430985145579494367}
+  - component: {fileID: 1996074871741473110}
   m_Layer: 6
   m_Name: Door Asset
   m_TagString: Door
@@ -53,28 +54,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &269264048348901867
+--- !u!4 &110427402585364757
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1092312978795775623}
+  m_GameObject: {fileID: 3028741256080883474}
   serializedVersion: 2
-  m_LocalRotation: {x: 1.11022296e-17, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.0000176, y: -0.4999488, z: 13.3256}
-  m_LocalScale: {x: 1, y: 0.832, z: 0.14763151}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.6009615, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7714821287727953547}
+  m_Father: {fileID: 752897618377822383}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8834564252384088907
+--- !u!114 &5832327987801608068
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1092312978795775623}
+  m_GameObject: {fileID: 3028741256080883474}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8233d90336aea43098adf6dbabd606a2, type: 3}
@@ -280,18 +281,18 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6648
+  m_VersionIndex: 6651
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!114 &3431110913410284739
+--- !u!114 &2682328029406341090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1092312978795775623}
+  m_GameObject: {fileID: 3028741256080883474}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ca002da428252441b92f28d83c8a65f, type: 3}
@@ -309,13 +310,13 @@ MonoBehaviour:
     - rid: 8596785168567763299
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
       data: 
---- !u!23 &4978559370499246908
+--- !u!23 &5136726258326352338
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1092312978795775623}
+  m_GameObject: {fileID: 3028741256080883474}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -357,13 +358,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8257657944617065874
+--- !u!65 &1621099663974207764
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1092312978795775623}
+  m_GameObject: {fileID: 3028741256080883474}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -378,11 +379,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 3.5778253, z: 1.0000006}
   m_Center: {x: 1.0000176, y: 2.4177558, z: -0.2593404}
---- !u!33 &3411124236110402710
+--- !u!33 &4430985145579494367
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1092312978795775623}
+  m_GameObject: {fileID: 3028741256080883474}
   m_Mesh: {fileID: 0}
+--- !u!114 &1996074871741473110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3028741256080883474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d6f4541611e0743975732ba1628829, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorOpener
+  isLocked: 0
+  openAngle: 90
+  openSpeed: 2
+  openInPositiveDirection: 1
