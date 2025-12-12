@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [Header("Mouse Look Variables")]
-
     [SerializeField] Camera playerCamera;
     [SerializeField] float mouseSensitivity = 100f;
     [SerializeField] float maxLookUp, maxLookDown;
@@ -14,25 +13,21 @@ public class Player : MonoBehaviour
     float playerYRotaion = 0f;
 
     [Header("Movement Variables")]
-
     [SerializeField] CharacterController playerController;
     [SerializeField] float moveSpeed = 5f;
 
     Vector2 moveInput;
 
     [Header("Jumping Variables")]
-
     [SerializeField] float jumpHeight;
 
     [Header("Gravity Variables")]
-
     [SerializeField] float gravity = -9.81f;
     [SerializeField] float groundedDownVelocity = -2f;
 
     Vector3 velocity;
 
     [Header("Interactions Variables")]
-
     public Transform itemContainer;
     public bool isHandsFree;
 
@@ -47,6 +42,20 @@ public class Player : MonoBehaviour
     Transform currentItem;
     Rigidbody currentItemRigidBody;
     Collider currentItemCollider;
+
+    // ======================================================
+    //  HEALTH SYSTEM (added cleanly)
+    // ======================================================
+    [Header("Health Settings")]
+    [SerializeField] float maxHealth = 100f;
+    float currentHealth;
+    public bool IsDead { get; private set; }
+
+    void Awake()
+    {
+        currentHealth = maxHealth;
+    }
+    // ======================================================
 
     void Start()
     {
@@ -81,7 +90,6 @@ public class Player : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
         playerCamera.transform.localRotation = Quaternion.Euler(cameraXRotation, 0f, 0f);
     }
-
 
     void OnMove(InputValue value)
     {
@@ -129,13 +137,11 @@ public class Player : MonoBehaviour
         {
             Transform hitTransform = objectHit.transform;
 
-            // Perform a raycast to ensure direct line of sight to the hit object
             Vector3 directionToHit = (hitTransform.position - playerCamera.transform.position).normalized;
             float distanceToHit = Vector3.Distance(playerCamera.transform.position, objectHit.point);
 
             if (Physics.Raycast(playerCamera.transform.position, directionToHit, out RaycastHit obstructionHit, distanceToHit))
             {
-                // If the raycast hits something else first, block interaction
                 if (obstructionHit.transform != hitTransform)
                 {
                     Debug.Log("Obstructed by: " + obstructionHit.transform.name);
@@ -143,14 +149,12 @@ public class Player : MonoBehaviour
                 }
             }
 
-            Debug.Log("Hit: " + hitTransform.name);
             if (hitTransform.TryGetComponent(out IInteractable interactable))
             {
                 interactable.PlayerInteracted();
             }
         }
     }
-
 
     void OnDrop(InputValue value)
     {
@@ -169,7 +173,9 @@ public class Player : MonoBehaviour
         currentItemRigidBody.isKinematic = false;
         currentItemCollider.isTrigger = false;
         currentItem.SetParent(null);
+
         currentItemRigidBody.linearVelocity = playerController.velocity;
+
         currentItemRigidBody.AddForce(playerCamera.transform.forward * dropForwardForce, ForceMode.Impulse);
         currentItemRigidBody.AddForce(playerCamera.transform.up * dropUpwardForce, ForceMode.Impulse);
 
@@ -187,6 +193,27 @@ public class Player : MonoBehaviour
         return currentItem;
     }
 
+    // ======================================================
+    // HEALTH FUNCTIONS (clean, isolated)
+    // ======================================================
+    public void TakeDamage(float damage)
+    {
+        if (IsDead) return;
+
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+            Die();
+    }
+
+    void Die()
+    {
+        IsDead = true;
+        Debug.Log("Player has died.");
+        // You can add respawn or death UI here later
+    }
+    // ======================================================
+
     public void SetInventoryState(bool isOpen)
     {
         if (isOpen)
@@ -200,7 +227,6 @@ public class Player : MonoBehaviour
             Cursor.visible = false;
         }
     }
-
 
     void OnDrawGizmos()
     {
